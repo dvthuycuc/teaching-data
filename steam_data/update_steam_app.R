@@ -67,6 +67,11 @@ if (!file.exists(db_path)) {
     num_players INTEGER,
     CONSTRAINT pk_players PRIMARY KEY (appid, record_date)
   );
+  
+  -- 6) Deactivate app
+  CREATE TABLE IF NOT EXISTS STEAM_DEACTIVVATE_APPS (
+    appid  INTEGER NOT NULL PRIMARY KEY
+  );
   "
   
   # execute DDL
@@ -76,7 +81,7 @@ if (!file.exists(db_path)) {
 }
 
 df_appdetails_db <- dbReadTable(con, "STEAM_APPDETAILS") 
-df_player_db <- dbReadTable(con, "STEAM_NUM_PLAYERS") 
+df_deactivate_app <- dbReadTable(con, "STEAM_DEACTIVVATE_APPS") 
 
 #get game Info:
 fun_get_game_info <- function(appid){
@@ -104,7 +109,7 @@ raw <- fromJSON(url)
 df_game_id <- as.data.frame(raw$applist$apps, stringsAsFactors = FALSE)
 df_game_id <- df_game_id |>
   filter(nzchar(name)) |>
-  filter(!appid %in% df_appdetails_db$appid) |> 
+  filter((!appid %in% df_appdetails_db$appid) & (!appid %in% df_deactivate_app$appid)) |> 
   arrange(appid)
 
 
@@ -113,6 +118,14 @@ for (i in 1:nrow(df_game_id)) {
   app_result <- try({
     app_data <- fun_get_game_info(appid)
     if (!isTRUE(app_data[[as.character(appid)]]$success)) {
+      dbExecute(
+        con,
+        "
+        INSERT INTO STEAM_DEACTIVVATE_APPS (appid)
+        VALUES (?);
+        ",
+        params = list(appid)
+      )
       next
     }
   }, silent=TRUE)

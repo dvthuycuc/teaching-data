@@ -8,6 +8,8 @@ Each dataset folder contains:
 - A local database (.duckdb)
 - Data collection or update scripts (R )
 
+Maximum total databases should be 500MB
+
 #### Clone the project:
 
 ```r
@@ -50,7 +52,7 @@ Single Game
 ```r
 Rscript update_steam_num_players.R <appid>
 # Example:
-Rscript update_steam_num_players.R 150
+Rscript update_steam_num_players.R 10
 ```
 
 All games
@@ -58,6 +60,21 @@ All games
 Rscript update_steam_num_players.R
 ```
 
+#### Delete Data Number of Players:
+
+Delete all data before a given days
+
+Single Game
+```r
+Rscript delete_steam_num_players.R <days> <appid>
+# Example:
+Rscript delete_steam_num_players.R 730 10
+```
+
+All games
+```r
+Rscript delete_steam_num_players.R 730
+```
 
 Page for collecting data: https://archive.ics.uci.edu/
 
