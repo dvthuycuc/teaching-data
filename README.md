@@ -2,7 +2,7 @@
 Repo is using for collecting data purposes
 
 ## Steam Data
-![Database Schema](figures/steam_db_schema.png)
+![Database Schema](figures/steam_db_schema.pdf)
 
 Page for collecting data: https://archive.ics.uci.edu/
 
