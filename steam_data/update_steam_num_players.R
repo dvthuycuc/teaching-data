@@ -47,10 +47,10 @@ for (appid in appId_list){
         ",
         params = list(appid, today, players)
       )
-    }, silent=TRUE})
-    
+    }
+    }, silent=FALSE)
+
 }
 
-print(paste0("Update today players for app ", appIds))
-
+cat("Update today players for app ", appIds)
 dbDisconnect(con)
