@@ -2,3 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
+steam_data.duckdb
+steam_data.duckdb.wal
