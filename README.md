@@ -100,7 +100,7 @@ All market data is retrieved from the [Binance API](https://www.binance.com/en/b
 crypto_data/
 ```
 
-#### Add or Delete followup coincode
+#### Add or Delete following coincode
 Use the script below to add or remove supported cryptocurrencies.
 
 Examples:
