@@ -33,7 +33,7 @@ The Steam dataset consists of five main tables, linked by the appid field (the u
 ### How to Use
 
 #### Copy or Download Database
-(Optional) Download the pre-collected Steam database and place it into the folder:
+(Optional) Download the pre-collected [Steam database](https://nextcloud.th-deg.de/s/9GMti9tBYGEBEBp) and place it into the folder:
 
 ```r
 steam_data/
@@ -94,7 +94,7 @@ All market data is retrieved from the [Binance API](https://www.binance.com/en/b
 ### How to Use
 
 #### Copy or Download Database
-(Optional) Download the pre-collected Crypto database and place it into the folder:
+(Optional) Download the pre-collected [Crypto database](https://nextcloud.th-deg.de/s/jmGAQ8JExrJk65L) and place it into the folder:
 
 ```r
 crypto_data/
