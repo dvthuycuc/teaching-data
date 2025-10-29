@@ -130,6 +130,7 @@ for (i in 1:nrow(df_game_id)) {
     }
   }, silent=TRUE)
   if (inherits(app_result, "try-error")) {
+    # cat(appid, "Error:", conditionMessage(attr(app_result, "condition")), "\n")
     next
   }
   
@@ -222,8 +223,4 @@ for (i in 1:nrow(df_game_id)) {
 }
 
 dbDisconnect(con)
-
-
-
-
 

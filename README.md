@@ -76,27 +76,63 @@ All games
 Rscript delete_steam_num_players.R 730
 ```
 
-Page for collecting data: https://archive.ics.uci.edu/
+## Crypto Data
 
-https://disease.sh/docs/#/COVID-19%3A%20JHUCSSE/get_v3_covid_19_historical
+The Crypto dataset consists of four main tables, linked by the coin_code field (the unique identifier of each cryptocurrency).
 
+All market data is retrieved from the [Binance API](https://www.binance.com/en/binance-api)
 
-No history number of players => require run every day to get it
+<p align="center"> <img src="figures/crypto_db_schema.png" alt="Crypto Database Schema" width="600"/> </p>
 
+| Table               | Description                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------ |
+| **CRYPTO_COIN**     | Master list of all tracked cryptocurrencies with their unique `coin_code`.                       |
+| **CRYPTO_PRICE_1H** | Hourly price data for each cryptocurrency, including open, close, high, low, and trading volume. |
+| **CRYPTO_PRICE_1D** | Daily aggregated price data for each cryptocurrency.                                             |
+| **CRYPTO_PRICE_1W** | Weekly aggregated price data for each cryptocurrency.                                            |
 
-https://steamspy.com/api.php
+### How to Use
 
-# history of number players
-https://steamcharts.com/app/570/chart-data.json
+#### Copy or Download Database
+(Optional) Download the pre-collected Crypto database and place it into the folder:
 
+```r
+crypto_data/
+```
 
-# current number of players:
-https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=570
+#### Add or Delete followup coincode
+Use the script below to add or remove supported cryptocurrencies.
 
-# game information
-https://store.steampowered.com/api/appdetails?appids=570
+Examples:
 
+BTCUSDT: Bitcoin price in USD
 
-https://disease.sh/docs/#/COVID-19%3A%20JHUCSSE/get_v3_covid_19_historical
-https://dbdiagram.io/d/68f774832e68d21b41824dde
-https://dbdiagram.io/d/68f774832e68d21b41824dde
+PAXGUSDT: Gold-backed token price in USD
+
+```r
+cd crypto_data
+Rscript update_crypto_coincode.R <coin_code> <add|delete>
+```
+
+#### Update coin price data
+
+Single code
+```r
+Rscript update_crypto_price.R <coin_code>
+```
+
+All code
+```r
+Rscript update_crypto_price.R
+```
+
+## Contact
+
+For any questions or collaboration inquiries, please contact:  
+**Van Thuy Cuc Dang**  
+dvthuycuc@gmail.com  
+Deggendorf Institute of Technology, Germany
+
+**Prof. Dr. Tim Weber, Dipl.-Ing.(FH)**  
+tim.weber@th-deg.de  
+Deggendorf Institute of Technology, Germany
