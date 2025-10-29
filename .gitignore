@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 *.Rproj
-steam_data.duckdb
-steam_data.duckdb.wal
+*.duckdb
+*.duckdb.wal

@@ -105,9 +105,8 @@ Use the script below to add or remove supported cryptocurrencies.
 
 Examples:
 
-BTCUSDT: Bitcoin price in USD
-
-PAXGUSDT: Gold-backed token price in USD
+- BTCUSDT: Bitcoin price in USD
+- PAXGUSDT: Gold-backed token price in USD
 
 ```r
 cd crypto_data
