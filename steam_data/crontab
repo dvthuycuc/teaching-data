@@ -1,0 +1,6 @@
+0 17 * * * TZ=Europe/Berlin /usr/bin/docker run --rm \
+-e TZ=Europe/Berlin \
+-e STEAM_DB_PATH=/data/steam_data.duckdb \
+-v /home/hsd-srv/Documents/data:/data \
+steam-updater \
+Rscript /app/update_steam_num_players.R >> /home/hsd-srv/Documents/data/steam_cron.log 2>&1

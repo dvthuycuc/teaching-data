@@ -4,7 +4,7 @@ suppressPackageStartupMessages({
   library(lubridate)
 })
 
-db_path <- "steam_data.duckdb"
+db_path <- Sys.getenv("STEAM_DB_PATH", "steam_data.duckdb")
 con <- dbConnect(duckdb::duckdb(), db_path)
 
 # ---- Get command-line argument ----

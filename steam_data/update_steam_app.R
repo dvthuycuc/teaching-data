@@ -5,7 +5,7 @@ suppressPackageStartupMessages({
   library(duckdb)
   library(lubridate)
 })
-db_path <- "steam_data.duckdb"
+db_path <- Sys.getenv("STEAM_DB_PATH", "steam_data.duckdb")
 
 if (!file.exists(db_path)) {
   con <- dbConnect(duckdb::duckdb(), db_path)
