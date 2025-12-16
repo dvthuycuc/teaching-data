@@ -16,7 +16,7 @@ WORKDIR /app
 COPY update_steam_num_players.R /app/update_steam_num_players.R
 
 COPY crontab /etc/cron.d/steam-cron
-RUN chmod 0644 /etc/cron.d/steam-cron && crontab /etc/cron.d/steam-cron
+RUN chmod 0644 /etc/cron.d/steam-cron
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
