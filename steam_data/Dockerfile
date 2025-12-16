@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV TZ=Europe/Berlin
 
-RUN R -e "install.packages(c('jsonlite','dplyr','DBI','duckdb','lubridate'), repos='https://cloud.r-project.org')"
+RUN R -e "install.packages(c('jsonlite','dplyr','DBI','duckdb','lubridate','httr'), repos='https://cloud.r-project.org')"
 
 WORKDIR /app
 COPY update_steam_num_players.R /app/update_steam_num_players.R
